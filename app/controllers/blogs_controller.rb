@@ -30,8 +30,8 @@ class BlogsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @blog.errors, status: :unprocessable_entity }
+      endportfolio_item
       end
-    end
   end
 
   # PATCH/PUT /blogs/1 or /blogs/1.json
@@ -59,12 +59,13 @@ class BlogsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
+      def set_blog
+        @blog = Blog.find(params[:id])
+      end
 
     # Only allow a list of trusted parameters through.
-    def blog_params
-      params.require(:blog).permit(:title, :body)
-    end
+      def blog_params
+        params.require(:blog).permit(:title, :body)
+      end
+  end
 end
