@@ -24,11 +24,12 @@ class PortifoliosController < ApplicationController
     end
 
     def update
+      
         @portfolio_item = Portifolio.find(params[:id])
         respond_to do |format|
           if @portfolio_item.update(params.require(:portifolio).permit(:title,:subtitle, :body))
             format.html { redirect_to portifolios_path, notice: "portfolio_item was successfully updated." }    
-          else
+          elseend
             format.html { render :edit, status: :unprocessable_entity }
           end
         end

@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[ show edit update destroy ]
+  before_action :set_blog, only: %i[ show edit update destroy toggle_status ]
 
   # GET /blogs or /blogs.json
   def index
@@ -30,8 +30,8 @@ class BlogsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @blog.errors, status: :unprocessable_entity }
-      endportfolio_item
       end
+    end
   end
 
   # PATCH/PUT /blogs/1 or /blogs/1.json
@@ -56,16 +56,26 @@ class BlogsController < ApplicationController
       format.json { head :no_content }
     end
   end
+ 
+  def toggle_status
+
+    if @blog.draft? 
+      @blog.published!
+    elsif @blog.published?
+      @blog.draft!
+    end
+    
+    redirect_to blogs_url,notice: "Post status has been updated"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-      def set_blog
-        @blog = Blog.find(params[:id])
-      end
+    def set_blog
+      @blog = Blog.friendly.find(params[:id])
+    end
 
     # Only allow a list of trusted parameters through.
-      def blog_params
-        params.require(:blog).permit(:title, :body)
-      end
-  end
+    def blog_params
+      params.require(:blog).permit(:title, :body)
+    end
 end
