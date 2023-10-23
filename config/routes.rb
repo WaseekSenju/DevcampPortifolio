@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   
   resources :portifolios , except: [:delete,:show]
-  
+  get 'flutter-items',to: 'portifolios#flutter'
   get 'portifolio/show/:id', to: 'portifolios#show', as: 'portifolio_show'
   delete 'portifolio/:id', to: 'portifolios#destroy', as: 'portifolio_delete'
 

@@ -1,8 +1,10 @@
 class PortifoliosController < ApplicationController
     def index 
-        @portfolio_items = Portifolio.all 
+        @portfolio_items = Portifolio.all
     end
-
+    def flutter
+      @flutter_portfolio_item = Portifolio.flutter
+    end
     def new 
         @portfolio_item = Portifolio.new 
     end
