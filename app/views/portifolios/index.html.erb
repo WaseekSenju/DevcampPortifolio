@@ -9,5 +9,6 @@
     <p><%=portfolio_item.body%></p>
     <%= image_tag portfolio_item.thumb_image unless portfolio_item.thumb_image.nil? %>
     <%= link_to "Edit", edit_portifolio_path(portfolio_item)%>
-    <%= link_to "Destroy this Portfolio", portifolio_delete_path(portfolio_item), data: { "turbo-method": :delete , "turbo-confirm": "Are you sure?" }  %>
+    <%= link_to "Destroy this Portfolio", portifolio_delete_path(portfolio_item)%>
+
 <%end%>

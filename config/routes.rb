@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :portifolios , except: [:show,:destroy]
+  resources :portifolios , except: [:delete,:show]
   
   get 'portifolio/show/:id', to: 'portifolios#show', as: 'portifolio_show'
-  get 'portifolio/:id', to: 'portifolios#destroy', as: 'portifolio_delete'
+  delete 'portifolio/:id', to: 'portifolios#destroy', as: 'portifolio_delete'
 
   get 'about-me', to: 'pages#about'
   get 'contact', to: 'pages#contact'

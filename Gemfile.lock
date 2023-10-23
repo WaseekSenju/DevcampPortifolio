@@ -70,6 +70,13 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    coffee-rails (5.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 5.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -77,6 +84,7 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
+    execjs (2.9.1)
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
     globalid (1.2.1)
@@ -176,9 +184,8 @@ GEM
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
+    turbolinks (2.5.4)
+      coffee-rails
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     web-console (4.2.1)
@@ -206,7 +213,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  turbolinks (~> 5)
+  turbolinks (~> 2.5, >= 2.5.3)
   tzinfo-data
   web-console
 
