@@ -1,4 +1,5 @@
 class Portifolio < ApplicationRecord
+    has_many :technologies
     include PlaceHolder
     validates_presence_of :title, :body, :main_image, :thumb_image
 

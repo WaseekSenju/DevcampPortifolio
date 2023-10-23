@@ -48,4 +48,14 @@ Portifolio.create!(
     main_image:"https://placehold.co/600x400",
     thumb_image:"https://placehold.co/350X200",
 )
+
+
+3.times do |technology|
+    Portifolio.last.technologies.create!(
+            name: "Technology #{technology}",
+    )
+
+end
+
+puts "3 Technologies created"
 puts "9 portifolio items created"
