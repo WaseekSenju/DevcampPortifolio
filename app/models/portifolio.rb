@@ -1,11 +1,14 @@
 class Portifolio < ApplicationRecord
     has_many :technologies
+    accepts_nested_attributes_for :technologies, 
+                                 reject_if: lambda { |attribute| attribute['name'].blank?}
+
     include PlaceHolder
     validates_presence_of :title, :body, :main_image, :thumb_image
 
     def self.flutter
         where(subtitle: 'Flutter')
-    end
+    end 
 
     scope :ruby_on_rails_portifolio_items, -> { where(subtitle: 'Ruby on rails')}
 

@@ -52,7 +52,7 @@ Portifolio.create!(
 
 3.times do |technology|
     Portifolio.last.technologies.create!(
-            name: "Technology #{technology}",
+        name: "Technology #{technology}",
     )
 
 end
