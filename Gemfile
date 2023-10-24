@@ -29,7 +29,8 @@ gem "jbuilder"
 
 gem 'friendly_id', '~> 5.1'
 
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 2.5', '>= 2.5.3'
+
 
 
 # Use Redis adapter to run Action Cable in production
@@ -69,3 +70,4 @@ group :development do
   # gem "spring"
 end
 
+gem 'devise', '~> 4.9', '>= 4.9.3'
