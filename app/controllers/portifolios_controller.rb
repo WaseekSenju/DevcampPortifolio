@@ -13,7 +13,7 @@ class PortifoliosController < ApplicationController
     end
 
     def create
-        @portfolio_item = Portifolio.new(params.require(:portifolio).permit(:title,:subtitle, :body,technologies_attributes: [:name]))
+        @portfolio_item = Portifolio.new(portifolio_params)
     
         respond_to do |format|
           if @portfolio_item.save
@@ -32,7 +32,7 @@ class PortifoliosController < ApplicationController
       
         @portfolio_item = Portifolio.find(params[:id])
         respond_to do |format| 
-          if @portfolio_item.update(params.require(:portifolio).permit(:title,:subtitle, :body))
+          if @portfolio_item.update(portifolio_params)
             format.html { redirect_to portifolios_path, notice: "portfolio_item was successfully updated." }    
           elseend
             format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,16 @@ class PortifoliosController < ApplicationController
           format.html { redirect_to portifolios_url, notice: "portifolio item was successfully destroyed." }
         end
     end
-
-    
-
+  
+    private 
+      def portifolio_params
+        params.require(:portifolio).permit(
+          :title,
+          :subtitle, 
+          :body,
+          technologies_attributes: [:name]
+        )
+      end
+  
+ 
 end
