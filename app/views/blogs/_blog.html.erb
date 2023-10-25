@@ -3,7 +3,9 @@
     <strong>Title:</strong>
     <%= blog.title.upcase %>
   </p>
-
+<p>
+  <%= distance_of_time_in_words(blog.created_at,Time.now)%>
+</p>
   <p>
     <strong>Body:</strong>
     <%= blog.body %>
