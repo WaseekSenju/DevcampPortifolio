@@ -21,23 +21,11 @@
 
 
 
-    <% if current_user.is_a?(User)%>
-      <%= link_to "Logout",destroy_user_session_path, method: :delete, data: { "turbo-method": :delete } %>
-    <%else%>
-      <%= link_to "Register",new_user_registration_path %>
-      <%= link_to "Login", new_user_session_path%>
-    <% end%>
+   <%=login_helper%>
     <%= yield %>
 
-    <div>
-      <div><%=link_to "Home", root_path%></div>
-      <div><%=link_to "About", about_me_path%></div>
-      <div><%=link_to "Contact", contact_path%></div>
-      <div><%=link_to "Portfolio", portifolios_path%></div>
-    </div>
-    <% if session[:source]%>
-      <p>Thanks for visiting me from <%= session[:source]%></p>
-    <%end%>
+ <%= render "/shared/navbar" , location: "bottom"%>
+    <%=source_helper%>
   </body>
 </html>
 
