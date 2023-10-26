@@ -4,6 +4,20 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
+    user ||= User.new # guest user (not logged in)
+    
+    # All users can read blogs
+    can :read, Blog
+    
+    # Logged in users can manage their own blogs
+    can :manage, Blog, user_id: user.id
+    
+    # Admins can manage all blogs
+    can :manage, Blog if user.admin?
+
+
+
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?

@@ -20,6 +20,11 @@
     <%= form.label :body, style: "display: block" %>
     <%= form.text_area :body %>
   </div>
+  
+
+   <% if current_user %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  <% end %>
 
   <div>
     <%= form.submit %>
